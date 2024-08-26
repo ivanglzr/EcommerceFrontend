@@ -6,7 +6,9 @@ import { handleErrors, validateResponse } from "./functions";
 
 export async function getProducts(): Promise<GetProductsResponseInterface> {
   try {
-    const petition = await fetch(ROUTES.URL + ROUTES.GET_PRODUCTS);
+    const petition = await fetch(ROUTES.URL + ROUTES.GET_PRODUCTS, {
+      cache: "no-cache",
+    });
     const res = await petition.json();
 
     validateResponse(res, petition.status);
