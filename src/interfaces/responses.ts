@@ -6,5 +6,5 @@ export interface BackendResponseInterface {
 }
 
 export interface GetProductsResponseInterface extends BackendResponseInterface {
-  products: Array<ProductInterface>;
+  products: ProductInterface[];
 }
