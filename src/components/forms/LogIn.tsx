@@ -8,7 +8,11 @@ import { LogInInterface } from "@/interfaces/user";
 
 import { loginUser } from "@/services/user";
 
+import { useRouter } from "next/navigation";
+
 export default function LogIn() {
+  const router = useRouter();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -31,7 +35,7 @@ export default function LogIn() {
 
       alert(res.message);
 
-      //TODO: redirect user to home page
+      router.push("/");
     } catch (error) {
       alert(error);
     }
