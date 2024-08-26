@@ -1,3 +1,5 @@
+import { inputStyles } from "@/css/styles";
+
 export default function FormGroup({
   name,
   id,
@@ -12,12 +14,7 @@ export default function FormGroup({
       <label className="text-2xl" htmlFor={id}>
         {name}
       </label>
-      <input
-        className="py-2 px-4 rounded-xl text-xl text-first-color focus:outline-none"
-        type={type}
-        id={id}
-        name={id}
-      />
+      <input className={inputStyles} type={type} id={id} name={id} />
     </div>
   );
 }
