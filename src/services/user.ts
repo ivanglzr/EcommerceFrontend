@@ -12,6 +12,9 @@ export async function loginUser(
     const petition = await fetch(ROUTES.URL + ROUTES.LOGIN_USER, {
       method: "POST",
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(loginData),
     });
     const res: BackendResponseInterface = await petition.json();
