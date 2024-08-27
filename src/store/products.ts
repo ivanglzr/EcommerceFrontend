@@ -5,6 +5,7 @@ import { ProductInterface } from "@/interfaces/product";
 interface ProductsStoreInterface {
   products: ProductInterface[] | undefined;
   filteredProducts: ProductInterface[] | undefined;
+  search: string | undefined;
   setProducts: (products: ProductInterface[]) => void;
   searchProducts: (query: string) => void;
   filterProductsByCategory: (category: string) => void;
@@ -13,17 +14,18 @@ interface ProductsStoreInterface {
 export const useProductsStore = create<ProductsStoreInterface>((set, get) => ({
   products: undefined,
   filteredProducts: undefined,
+  search: undefined,
   setProducts: (products: ProductInterface[]) =>
     set({ products, filteredProducts: products }),
   searchProducts: (query) => {
     if (query === "" || !query) {
-      set({ filteredProducts: get().products });
+      set({ filteredProducts: get().products, search: query });
       return;
     }
 
     const keywords = query.toLowerCase().split(" ");
 
-    const products = get().products;
+    const { products } = get();
 
     if (!products) return;
 
@@ -36,10 +38,10 @@ export const useProductsStore = create<ProductsStoreInterface>((set, get) => ({
       )
     );
 
-    set({ filteredProducts: newProducts });
+    set({ filteredProducts: newProducts, search: query });
   },
   filterProductsByCategory: (category) => {
-    const products = get().products;
+    const { products } = get();
 
     if (!products) return;
 
