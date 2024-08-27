@@ -23,7 +23,10 @@ export const useProductsStore = create<ProductsStoreInterface>((set, get) => ({
       return;
     }
 
-    const keywords = query.toLowerCase().split(" ");
+    const keywords = query
+      .toLowerCase()
+      .split(" ")
+      .filter((keyword) => keyword !== "");
 
     const { products } = get();
 
