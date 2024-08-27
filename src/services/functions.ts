@@ -1,3 +1,5 @@
+import { ROUTES } from "./constants";
+
 import { BackendResponseInterface } from "@/interfaces/responses";
 
 import {
@@ -26,4 +28,8 @@ export function handleErrors(error: unknown) {
   }
 
   throw error;
+}
+
+export function getImageURL(imageName: string) {
+  return ROUTES.URL + ROUTES.GET_IMAGE(imageName);
 }
