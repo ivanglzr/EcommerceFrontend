@@ -30,6 +30,6 @@ export function handleErrors(error: unknown) {
   throw error;
 }
 
-export function getImageURL(imageName: string) {
+export function getImageURL(imageName: string | null) {
   return ROUTES.URL + ROUTES.GET_IMAGE(imageName);
 }
