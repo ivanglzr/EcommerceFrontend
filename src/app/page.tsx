@@ -1,3 +1,5 @@
-export default function HomePage() {
-  return <h1>Hello world</h1>;
+import HomePageView from "@/views/HomePageView";
+
+export default async function HomePage() {
+  return <HomePageView />;
 }
